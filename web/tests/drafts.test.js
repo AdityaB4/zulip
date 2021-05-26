@@ -64,9 +64,10 @@ const messages_overlay_ui = zrequire("messages_overlay_ui");
 const timerender = zrequire("timerender");
 
 const mock_current_timestamp = 1234;
+const stream_id = 30;
 
 const draft_1 = {
-    stream_id: 30,
+    stream_id,
     topic: "topic",
     type: "stream",
     content: "Test stream message",
@@ -80,7 +81,7 @@ const draft_2 = {
     updatedAt: mock_current_timestamp,
 };
 const short_msg = {
-    stream_id: 30,
+    stream_id,
     topic: "topic",
     type: "stream",
     content: "a",
