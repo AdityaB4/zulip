@@ -48,7 +48,14 @@ function composing_to_current_private_message_narrow() {
     );
 }
 
-export function update_narrow_to_recipient_visibility() {
+export function update_narrow_to_recipient_visibility(skip_transition = false) {
+    // We skip the transition when opening a collapsed compose box.
+    if (skip_transition) {
+        $(".narrow_to_compose_recipients").toggleClass("no-transition", true);
+        setTimeout(() => {
+            $(".narrow_to_compose_recipients").toggleClass("no-transition", false);
+        }, 10);
+    }
     const message_type = compose_state.get_message_type();
     if (message_type === "stream") {
         const stream_exists = Boolean(compose_state.stream_id());
@@ -58,7 +65,7 @@ export function update_narrow_to_recipient_visibility() {
             !composing_to_current_topic_narrow() &&
             compose_state.has_full_recipient()
         ) {
-            $(".narrow_to_compose_recipients").toggleClass("invisible", false);
+            $(".narrow_to_compose_recipients").toggleClass("collapsed", false);
             return;
         }
     } else if (message_type === "private") {
@@ -68,11 +75,11 @@ export function update_narrow_to_recipient_visibility() {
             !composing_to_current_private_message_narrow() &&
             compose_state.has_full_recipient()
         ) {
-            $(".narrow_to_compose_recipients").toggleClass("invisible", false);
+            $(".narrow_to_compose_recipients").toggleClass("collapsed", false);
             return;
         }
     }
-    $(".narrow_to_compose_recipients").toggleClass("invisible", true);
+    $(".narrow_to_compose_recipients").toggleClass("collapsed", true);
 }
 
 function update_fade() {

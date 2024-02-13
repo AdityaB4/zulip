@@ -463,6 +463,12 @@
         color: inherit;
     }
 
+    #compose_recipient_box,
+    #compose-direct-recipient .pill-container {
+        /* Opaque to overlap .narrow_to_compose_recipients button */
+        background-color: hsl(228deg 9% 11%);
+    }
+
     .dropdown-list-search .dropdown-list-search-input:focus {
         background-color: hsl(225deg 6% 7%);
         border: 1px solid hsl(0deg 0% 100% / 50%);
@@ -486,10 +492,6 @@
 
     .deactivated-pill {
         background-color: hsl(0deg 86% 14%) !important;
-    }
-
-    #compose-direct-recipient .pill-container {
-        background-color: hsl(0deg 0% 0% / 20%);
     }
 
     #searchbox {
@@ -634,7 +636,6 @@
         border-bottom-color: hsl(235deg 18% 7%);
     }
 
-    .narrow_to_compose_recipients,
     .expand_composebox_button,
     .collapse_composebox_button,
     .clear_search_button,
