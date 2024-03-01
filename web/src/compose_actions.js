@@ -258,7 +258,7 @@ export function start(msg_type, opts) {
 
     // If we're not explicitly opening a different draft, restore the last
     // saved draft (if it exists).
-    if (!opts.content && opts.draft_id === undefined) {
+    if (!opts.content && opts.draft_id === undefined && !opts.keep_composebox_empty) {
         const possible_last_draft = drafts.get_last_draft_based_on_compose_state();
         if (possible_last_draft !== undefined) {
             opts.draft_id = possible_last_draft.id;
